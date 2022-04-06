@@ -1,9 +1,9 @@
 {
   "name": "projen",
-  "description": "CDK for software projects",
+  "description": "CDK for software projects - Forked from projen/projen",
   "repository": {
     "type": "git",
-    "url": "https://github.com/projen/projen.git"
+    "url": "https://github.com/quackware/projen.git"
   },
   "bin": {
     "projen": "bin/projen"
@@ -43,8 +43,8 @@
     "projen": "/bin/bash ./projen.bash"
   },
   "author": {
-    "name": "Amazon Web Services",
-    "url": "https://aws.amazon.com",
+    "name": "QuackWare",
+    "url": "https://quack.software",
     "organization": true
   },
   "devDependencies": {

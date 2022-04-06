@@ -3,11 +3,13 @@ const { PROJEN_MARKER } = require("./lib/common");
 
 const project = new cdk.JsiiProject({
   name: "projen",
-  description: "CDK for software projects",
-  repository: "https://github.com/projen/projen.git",
+  packageName: "projen",
 
-  authorName: "Amazon Web Services",
-  authorUrl: "https://aws.amazon.com",
+  description: "CDK for software projects - Forked from projen/projen",
+  repository: "https://github.com/quackware/projen.git",
+
+  authorName: "QuackWare",
+  authorUrl: "https://quack.software",
   authorOrganization: true,
 
   stability: "experimental",

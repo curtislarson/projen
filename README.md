@@ -8,7 +8,9 @@
 <p align="center">
   Define and maintain complex project configuration through code.
 </p>
-
+<h2 align="center">
+  Note! This project is a fork of <a href="https://github.com/projen/projen">projen/projen</a>
+</h2>
 <p align="center">
   <a href="https://projen.io/"><strong>Documentation</strong></a> ·
   <a href="https://github.com/projen/projen/releases"><strong>Changelog</strong></a> ·
@@ -26,11 +28,11 @@
 
 <br/>
 
-*projen* synthesizes project configuration files such as `package.json`,
+_projen_ synthesizes project configuration files such as `package.json`,
 `tsconfig.json`, `.gitignore`, GitHub Workflows, eslint, jest, etc from a
 well-typed definition written in JavaScript.
 
-As opposed to existing templating/scaffolding tools, *projen* is not a one-off
+As opposed to existing templating/scaffolding tools, _projen_ is not a one-off
 generator. Synthesized files should never be manually edited (in fact, projen
 enforces that). To modify your project setup, users interact with rich
 strongly-typed class and execute `projen` to update their project configuration
@@ -68,6 +70,7 @@ list):
 * [cdk8s-app-ts](https://projen.io/api/API.html#projen-cdk8s-cdk8stypescriptapp) - CDK8s app in TypeScript.
 * [cdk8s-construct](https://projen.io/api/API.html#projen-cdk8s-constructlibrarycdk8s) - CDK8s construct library project.
 * [cdktf-construct](https://projen.io/api/API.html#projen-cdktf-constructlibrarycdktf) - CDKTF construct library project.
+* [deno](https://projen.io/api/API.html#projen-deno-denoproject) - Deno project.
 * [java](https://projen.io/api/API.html#projen-java-javaproject) - Java project.
 * [jsii](https://projen.io/api/API.html#projen-cdk-jsiiproject) - Multi-language jsii library project.
 * [nextjs](https://projen.io/api/API.html#projen-web-nextjsproject) - Next.js project without TypeScript.
@@ -89,7 +92,7 @@ The `new` command will create a `.projenrc.js` file which looks like this for
 `jsii` projects:
 
 ```js
-const { JsiiProject } = require('projen');
+const { JsiiProject } = require("projen");
 
 const project = new JsiiProject({
   authorAddress: "elad.benisrael@gmail.com",
@@ -122,7 +125,7 @@ const project = new JsiiProject({
   python: {
     distName: "mydist",
     module: "my_module",
-  }
+  },
 });
 ```
 
@@ -168,7 +171,9 @@ The `build` task is the same task that's executed in your CI builds. It
 typically compiles, lints, tests and packages your module for distribution.
 
 ### Shell Completions
+
 If installed as a global package, `projen` includes rich shell tab-completion support. To enable this in your shell, run:
+
 ```shell
 # Bash
 projen completion >> ~/.bashrc
@@ -176,24 +181,25 @@ projen completion >> ~/.bashrc
 # ZSH
 projen completion >> ~/.zshrc
 ```
+
 ## Features
 
 Some examples for features built-in to project types:
 
-* Fully synthesize `package.json`
-* Standard npm scripts like `compile`, `build`, `test`, `package`
-* eslint
-* Jest
-* jsii: compile, package, api compatibility checks, API.md
-* Bump & release scripts with CHANGELOG generation based on conventional commits
-* Automated PR builds
-* Automated releases to npm, maven, NuGet and PyPI
-* Automated dependency upgrades
-* Mergify configuration
-* LICENSE file generation
-* gitignore + npmignore management
-* Node "engines" support with coupling to CI build environment and @types/node
-* Anti-tamper: CI builds will fail if a synthesized file is modified manually
+- Fully synthesize `package.json`
+- Standard npm scripts like `compile`, `build`, `test`, `package`
+- eslint
+- Jest
+- jsii: compile, package, api compatibility checks, API.md
+- Bump & release scripts with CHANGELOG generation based on conventional commits
+- Automated PR builds
+- Automated releases to npm, maven, NuGet and PyPI
+- Automated dependency upgrades
+- Mergify configuration
+- LICENSE file generation
+- gitignore + npmignore management
+- Node "engines" support with coupling to CI build environment and @types/node
+- Anti-tamper: CI builds will fail if a synthesized file is modified manually
 
 ## Documentation
 
@@ -241,15 +247,13 @@ the `description` field. If you examine your `.projenrc.js` file, you'll see
 that `projen-vuejs` is defined as a dev dependency:
 
 ```javascript
-const { VueJsProject } = require('projen-vuejs');
+const { VueJsProject } = require("projen-vuejs");
 
 const project = new VueJsProject({
-  name: 'my-vuejs-sample',
+  name: "my-vuejs-sample",
   description: "my awesome vue project",
   // ...
-  devDeps: [
-    'projen-vuejs'
-  ]
+  devDeps: ["projen-vuejs"],
 });
 
 project.synth();
@@ -278,7 +282,7 @@ constructor of each project type.
 
 projen has an unofficial [VS Code extension]. Check it out!
 
-[VS Code extension]: https://marketplace.visualstudio.com/items?itemName=MarkMcCulloh.vscode-projen
+[vs code extension]: https://marketplace.visualstudio.com/items?itemName=MarkMcCulloh.vscode-projen
 
 ## Community
 
@@ -304,7 +308,9 @@ $ yarn watch # compile in the background
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-67-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->

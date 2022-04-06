@@ -40,6 +40,7 @@ export * as vscode from "./vscode";
 export * as java from "./java";
 export * as python from "./python";
 export * as typescript from "./typescript";
+export * as deno from "./deno";
 export * as javascript from "./javascript";
 export * as release from "./release";
 export * as awscdk from "./awscdk";
