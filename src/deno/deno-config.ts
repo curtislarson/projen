@@ -1,6 +1,5 @@
-import { JsonFile } from "../json";
-import { DenoProject } from "./deno";
-import { ImportMap } from "./import-map";
+import { ImportMap, ImportMapOptions } from "./import-map";
+import { DuckTapeJsonFile } from "./json-file";
 
 /**
  * A JSON representation of a Deno configuration file.
@@ -11,6 +10,10 @@ export interface DenoConfigOptions {
    */
   readonly fileName?: string;
 
+  readonly config?: DenoConfigData;
+}
+
+export interface DenoConfigData {
   /**
    * Instructs the TypeScript compiler how to compile .ts files.
    */
@@ -24,7 +27,7 @@ export interface DenoConfigOptions {
    * The location of an import map to be used when resolving modules. If an import map is
    * explicitly specified, it will override this value.
    */
-  readonly importMap?: string;
+  readonly importMap?: string | ImportMapOptions;
   /**
    * Configuration for linter
    */
@@ -32,7 +35,7 @@ export interface DenoConfigOptions {
   /**
    * Configuration for deno task
    */
-  readonly tasks?: Tasks;
+  readonly tasks?: DenoTasks;
 }
 
 /**
@@ -274,27 +277,37 @@ export interface LintRules {
 /**
  * Configuration for deno task
  */
-export interface Tasks {
+export interface DenoTasks {
   readonly [key: string]: string;
 }
 
-export class DenoConfig {
-  public readonly file: JsonFile;
+export class DenoConfig extends projen.Component {
+  public readonly file: DuckTapeJsonFile;
   public readonly fileName: string;
   public readonly importMap?: ImportMap;
 
-  constructor(project: DenoProject, options: DenoConfigOptions) {
-    this.fileName = options.fileName ?? "deno.json";
+  constructor(project: projen.Project, options: DenoConfigOptions) {
+    super(project);
 
-    if (options.importMap != null) {
-      this.importMap = new ImportMap(project, { filePath: options.importMap });
+    const { fileName, config } = options;
+    this.fileName = fileName ?? "deno.json";
+
+    if (
+      config !== undefined &&
+      config.importMap !== undefined &&
+      typeof config.importMap === "string"
+    ) {
+      const newConfig = {
+        ...config,
+        importMap: { importMapPath: config.importMap },
+      };
+      this.file = new DuckTapeJsonFile(project, this.fileName, {
+        obj: newConfig,
+      });
+    } else {
+      this.file = new DuckTapeJsonFile(project, this.fileName, {
+        obj: config,
+      });
     }
-
-    this.file = new JsonFile(project, this.fileName, {
-      obj: {
-        ...options,
-        fileName: undefined,
-      },
-    });
   }
 }

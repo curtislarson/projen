@@ -1,3 +1,4 @@
+//@ts-nocheck
 const { cdk, JsonFile, TextFile } = require("./lib");
 const { PROJEN_MARKER } = require("./lib/common");
 
